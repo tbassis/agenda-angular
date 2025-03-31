@@ -56,7 +56,7 @@ export class ContactListComponent implements OnInit {
     if (confirm('Tem certeza que deseja excluir permanentemente este contato?')) {
       this.contactService.deleteContact(id).subscribe({
         next: () => {
-          this.contacts = this.contacts.filter(contact => contact.id !== id);
+          this.loadContacts();
         },
         error: (error) => console.error('Erro ao excluir contato:', error)
       });
