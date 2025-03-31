@@ -47,7 +47,23 @@ export class AppComponent {
     // this.addNewContact(this.contactNew);
     // this.updateContact(this.updatedContact);
     // this.deleteContact(10);
+    // this.verificarNumero("81992436194");
   }
+
+  // verificarNumero(numero: string) {
+  //   this.contactService.checkPhoneExists(numero).subscribe({
+  //     next: (contacts) => {
+
+  //       this.loading = false;
+  //       console.log(contacts);
+
+  //     },
+  //     error: (error) => {
+  //       console.error('Erro ao carregar contatos:', error);
+  //       this.loading = false;
+  //     }
+  //   });
+  //}
 
   // loadContacts() {
   //   this.contactService.getContacts().subscribe({
@@ -122,18 +138,18 @@ export class AppComponent {
   //   });
   // }
 
-  deleteContact(id: number) {
-    this.contactService.deleteContact(this.deleteId).subscribe({
-      next: () => {
-        this.loading = false;
-        console.log("Contato Deletado")
-      },
-      error: (error) => {
-        console.error('Erro ao carregar contatos:', error);
-        this.loading = false;
-      }
-    });
-  }
+  // deleteContact(id: number) {
+  //   this.contactService.deleteContact(this.deleteId).subscribe({
+  //     next: () => {
+  //       this.loading = false;
+  //       console.log("Contato Deletado")
+  //     },
+  //     error: (error) => {
+  //       console.error('Erro ao carregar contatos:', error);
+  //       this.loading = false;
+  //     }
+  //   });
+  //}
 
 
 }

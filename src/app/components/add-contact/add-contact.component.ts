@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddContactComponent {
 	submitting = false;
+  celularExiste = false;
 	
   constructor(
     private contactService: ContactService,
@@ -23,15 +24,37 @@ export class AddContactComponent {
   ) {}
 
   onFormSubmit(contactData: any) {
-    this.submitting = true; // Ativa o estado de carregamento
-    
+    this.submitting = true;
+    this.celularExiste = false; // Resetar estado anterior
+
+    // Primeiro verifica o telefone
+    this.contactService.checkPhoneExists(contactData.celular).subscribe({
+      next: (response) => {
+        console.log(response.existe);
+        
+        if (response.existe) {
+          this.celularExiste = true;
+          this.submitting = false;
+        } else {
+          // Se não existe, prossegue com o cadastro
+          this.addNewContact(contactData);
+        }
+      },
+      error: (error) => {
+        console.error('Erro na verificação:', error);
+        this.submitting = false;
+      }
+    });
+  }
+
+  private addNewContact(contactData: any) {
     this.contactService.addContact(contactData).subscribe({
       next: () => {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        console.error('Erro ao adicionar contato:', error);
-        this.submitting = false; // Desativa o estado em caso de erro
+        console.error('Erro ao adicionar:', error);
+        this.submitting = false;
       }
     });
   }

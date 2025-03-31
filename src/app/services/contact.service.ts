@@ -23,6 +23,10 @@ export class ContactService {
 		return this.http.get<Contact>(`${this.apiUrl}/${id}`);
 	}
 
+	checkPhoneExists(celular: string): Observable<any> {
+		return this.http.get<any>(`${this.apiUrl}/verificar-numero/${celular}`)
+	}
+
 	addContact(contact: Contact): Observable<Contact> {
 		return this.http.post<Contact>(this.apiUrl, contact);
 	}
@@ -31,7 +35,7 @@ export class ContactService {
 		return this.http.put<Contact>(`${this.apiUrl}/${updatedContact.id}`, updatedContact);
 	}
 
-	  deleteContact(id: number): Observable<void> {
-	    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-	  }
+	deleteContact(id: number): Observable<void> {
+		return this.http.delete<void>(`${this.apiUrl}/${id}`);
+	}
 }
