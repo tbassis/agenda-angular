@@ -11,10 +11,10 @@ import { ContactFormComponent } from "../shared/contact-form.component"
 	selector: 'app-edit-contact',
 	templateUrl: './edit-contact.component.html',
 	imports: [
-    CommonModule,
-    FormsModule,
+		CommonModule,
+		FormsModule,
 		ContactFormComponent
-  ],
+	],
 })
 export class EditContactComponent implements OnInit {
 	contact!: Contact;
@@ -33,8 +33,7 @@ export class EditContactComponent implements OnInit {
 			next: (contact) => {
 				this.contact = contact;
 				this.loading = false;
-				console.log(contact);
-				
+
 			},
 			error: (error) => {
 				console.error('Erro ao carregar contato:', error);
@@ -45,8 +44,7 @@ export class EditContactComponent implements OnInit {
 
 	onFormSubmit(updatedContact: Contact) {
 		this.submitting = true;
-		console.log(updatedContact);
-		
+
 		this.contactService.updateContact({ ...updatedContact, id: this.contact.id }).subscribe({
 			next: () => {
 				this.router.navigate(['/']);
