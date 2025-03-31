@@ -7,11 +7,6 @@
     </div>
   </div>
 
-  <contact-form-component *ngIf="!loading" [initialData]="contact"
+  <contact-form-component *ngIf="!loading" [submitting]="submitting" [initialData]="contact"
     (formSubmitted)="onFormSubmit($event)"></contact-form-component>
-
-  <button *ngIf="submitting" class="btn btn-primary" type="button" disabled>
-    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-    Salvando...
-  </button>
 </div>

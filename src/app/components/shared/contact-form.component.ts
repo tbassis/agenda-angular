@@ -19,6 +19,7 @@ import { PhoneMaskDirective } from "./directives/phone-mask.directive"
 })
 export class ContactFormComponent {
   @Input() initialData: Contact | null = null;
+  @Input() submitting: boolean = false;
   @Output() formSubmitted = new EventEmitter<Contact>();
 
   contactForm: FormGroup;
