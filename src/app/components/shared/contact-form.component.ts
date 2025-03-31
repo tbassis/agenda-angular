@@ -26,7 +26,7 @@ export class ContactFormComponent {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       celular: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
-      telefone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      telefone: [''],
       favorito: ['N', Validators.required]
     });
   }
