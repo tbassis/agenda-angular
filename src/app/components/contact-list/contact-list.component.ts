@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { ContactResume } from '../../models/contact';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -11,7 +12,8 @@ import { ContactResume } from '../../models/contact';
   styleUrls: ['./contact-list.component.css'],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
 })
 export class ContactListComponent implements OnInit {
