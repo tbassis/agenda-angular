@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.css'],
   imports: [
     CommonModule,
     FormsModule,
