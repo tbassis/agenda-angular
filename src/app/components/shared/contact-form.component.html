@@ -44,8 +44,8 @@
         class="form-control"
         id="phone"
         formControlName="celular"
-        appPhoneMask
-        placeholder="(99) 99999-9999"
+        appPhoneMask="cel"
+        placeholder="(**) *****-****"
         [class.is-invalid]="contactForm.get('celular')?.invalid && contactForm.get('celular')?.touched"
       >
       <div class="invalid-feedback">
@@ -66,6 +66,8 @@
         class="form-control"
         id="phone"
         formControlName="telefone"
+        appPhoneMask="tel"
+        placeholder="(**) ****-****"
         [class.is-invalid]="contactForm.get('telefone')?.invalid && contactForm.get('telefone')?.touched"
       >
       <div class="invalid-feedback">
