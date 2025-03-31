@@ -28,7 +28,7 @@
 
         <div class="d-flex flex-row gap-3">
           <span *ngIf="contact.favorito === 'S'">*FAVORITO*</span>
-          <a [routerLink]="['/edit', contact.id]" class="btn btn-sm btn-secondary mr-2">Editar</a>
+          <a [routerLink]="['/edit', contact.id]" class="btn btn-sm btn-secondary text-center">Editar</a>
           <button (click)="deleteContact(contact.id)" class="btn btn-sm btn-danger">Excluir</button>
         </div>
       </div>
