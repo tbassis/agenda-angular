@@ -10,13 +10,16 @@ import { EditContactComponent } from "./components/edit-contact/edit-contact.com
 import { AddContactComponent } from "./components/add-contact/add-contact.component";
 import { ContactFormComponent } from "./components/shared/contact-form.component"
 
+import { PhoneMaskDirective } from "./components/shared/directives/phone-mask.directive";
+
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
     EditContactComponent,
     AddContactComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { ContactResume } from '../../models/contact';
 import { RouterModule } from '@angular/router';
+import { PhoneMaskDirective } from "../shared/directives/phone-mask.directive"
 
 @Component({
   standalone: true,
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    PhoneMaskDirective
   ],
 })
 export class ContactListComponent implements OnInit {

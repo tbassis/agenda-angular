@@ -44,6 +44,8 @@
         class="form-control"
         id="phone"
         formControlName="celular"
+        appPhoneMask
+        placeholder="(99) 99999-9999"
         [class.is-invalid]="contactForm.get('celular')?.invalid && contactForm.get('celular')?.touched"
       >
       <div class="invalid-feedback">
