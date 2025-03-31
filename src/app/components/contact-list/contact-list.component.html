@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h2>Lista de Contatos</h2>
 
-  <div class="mb-4">
+  <div class="d-flex items-center gap-3 mb-4">
     <input 
       type="text" 
       class="form-control" 
@@ -9,8 +9,8 @@
       [(ngModel)]="searchTerm"
       (input)="applyFilter()"
     >
+    <a routerLink="/add" class="d-inline-flex btn btn-primary">Adicionar</a>
   </div>
-  <!-- <a routerLink="/add" class="btn btn-primary mb-3">Novo Contato</a> -->
 
   <div *ngIf="loading" class="text-center">
     <div class="spinner-border text-primary" role="status">
