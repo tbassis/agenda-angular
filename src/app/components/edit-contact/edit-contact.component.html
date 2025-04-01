@@ -8,5 +8,5 @@
   </div>
 
   <contact-form-component *ngIf="!loading" [submitting]="submitting" [initialData]="contact"
-    (formSubmitted)="onFormSubmit($event)"></contact-form-component>
+    (formSubmitted)="onFormSubmit($event)" (formUpdated)="onFormUpdated($event)"></contact-form-component>
 </div>

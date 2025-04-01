@@ -5,6 +5,7 @@ import { Contact } from '../../models/contact';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContactFormComponent } from "../../shared/components/contact-form.component"
+import { CanDeactivateComponent } from "../../guards/unsaved-changes.guard";
 
 @Component({
 	standalone: true,
@@ -16,10 +17,11 @@ import { ContactFormComponent } from "../../shared/components/contact-form.compo
 		ContactFormComponent
 	],
 })
-export class EditContactComponent implements OnInit {
+export class EditContactComponent implements OnInit, CanDeactivateComponent {
 	contact!: Contact;
 	loading = true;
 	submitting = false;
+	hasUnsavedChange: boolean = false;
 
 	constructor(
 		private contactService: ContactService,
@@ -46,7 +48,15 @@ export class EditContactComponent implements OnInit {
 		});
 	}
 
+	onFormUpdated(formUpdated: boolean) {
+		console.log(formUpdated);
+		
+		this.hasUnsavedChange = formUpdated;
+	}
+
+
 	onFormSubmit(updatedContact: Contact) {
+		this.hasUnsavedChange = false;
 		this.submitting = true;
 
 		this.contactService.updateContact({ ...updatedContact, id: this.contact.id }).subscribe({

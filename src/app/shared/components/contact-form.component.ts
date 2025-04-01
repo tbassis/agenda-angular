@@ -21,6 +21,7 @@ export class ContactFormComponent {
   @Input() initialData: Contact | null = null;
   @Input() submitting: boolean = false;
   @Output() formSubmitted = new EventEmitter<Contact>();
+  @Output() formUpdated = new EventEmitter<boolean>();
 
   contactForm: FormGroup;
 
@@ -32,6 +33,11 @@ export class ContactFormComponent {
       telefone: [''],
       favorito: ['N', Validators.required]
     });
+
+  }
+
+  onInputChange(): void {
+    this.formUpdated.emit(true);
   }
 
   // Getter/Setter para o checkbox

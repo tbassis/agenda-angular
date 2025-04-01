@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ContactFormComponent } from "../../shared/components/contact-form.component"
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CanDeactivateComponent } from "../../guards/unsaved-changes.guard";
 
 @Component({
   selector: 'app-add-contact',
@@ -14,23 +15,28 @@ import { FormsModule } from '@angular/forms';
 		FormsModule
 	],
 })
-export class AddContactComponent {
+export class AddContactComponent implements CanDeactivateComponent {
 	submitting = false;
   celularExiste = false;
+  hasUnsavedChange:boolean = false;
 	
   constructor(
     private contactService: ContactService,
     private router: Router
   ) {}
 
+  onFormUpdated(formUpdated:boolean) {
+    this.hasUnsavedChange = formUpdated;
+  }
+
   onFormSubmit(contactData: any) {
+    this.hasUnsavedChange = false;
     this.submitting = true;
     this.celularExiste = false; // Resetar estado anterior
 
     // Primeiro verifica o telefone
     this.contactService.checkPhoneExists(contactData.celular).subscribe({
       next: (response) => {
-        console.log(response.existe);
         
         if (response.existe) {
           this.celularExiste = true;

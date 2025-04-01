@@ -8,5 +8,5 @@
   </div>
 
   <!-- Componente de formulário reutilizável -->
-  <contact-form-component [submitting]="submitting" (formSubmitted)="onFormSubmit($event)"></contact-form-component>
+  <contact-form-component [submitting]="submitting" (formSubmitted)="onFormSubmit($event)" (formUpdated)="onFormUpdated($event)"></contact-form-component>
 </div>
