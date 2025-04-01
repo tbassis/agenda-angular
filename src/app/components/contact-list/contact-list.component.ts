@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { ContactResume } from '../../models/contact';
 import { RouterModule } from '@angular/router';
-import { PhoneMaskDirective } from "../shared/directives/phone-mask.directive"
+import { PhoneMaskDirective } from "../../shared/directives/phone-mask.directive"
 
 @Component({
   standalone: true,

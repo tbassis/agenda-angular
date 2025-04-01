@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { Router } from '@angular/router';
-import { ContactFormComponent } from "../shared/contact-form.component"
+import { ContactFormComponent } from "../../shared/components/contact-form.component"
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

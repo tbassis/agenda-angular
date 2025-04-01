@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../../models/contact';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ContactFormComponent } from "../shared/contact-form.component"
+import { ContactFormComponent } from "../../shared/components/contact-form.component"
 
 @Component({
 	standalone: true,
@@ -29,6 +29,10 @@ export class EditContactComponent implements OnInit {
 
 	ngOnInit() {
 		const id = Number(this.route.snapshot.paramMap.get('id'));
+		this.getContactData(id)
+	}
+
+	getContactData(id: number) {
 		this.contactService.getContactById(id).subscribe({
 			next: (contact) => {
 				this.contact = contact;

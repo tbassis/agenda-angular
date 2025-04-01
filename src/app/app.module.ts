@@ -8,9 +8,9 @@ import { AppComponent } from './app.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { EditContactComponent } from "./components/edit-contact/edit-contact.component";
 import { AddContactComponent } from "./components/add-contact/add-contact.component";
-import { ContactFormComponent } from "./components/shared/contact-form.component"
+import { ContactFormComponent } from "./shared/components/contact-form.component"
 
-import { PhoneMaskDirective } from "./components/shared/directives/phone-mask.directive";
+import { PhoneMaskDirective } from "./shared/directives/phone-mask.directive";
 
 @NgModule({
   declarations: [
