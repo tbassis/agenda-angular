@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Contact } from '../../models/contact';
 import { PhoneMaskDirective } from "./directives/phone-mask.directive"
+import { FormCanDeactivate } from "../../guards/form-can-deactivate.interface"
 
 @Component({
   standalone: true,
@@ -17,8 +18,9 @@ import { PhoneMaskDirective } from "./directives/phone-mask.directive"
     PhoneMaskDirective
   ],
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements FormCanDeactivate {
   @Input() initialData: Contact | null = null;
+  @Input() formMode: 'add' | 'edit' = 'add'; // Define o fluxo
   @Input() submitting: boolean = false;
   @Output() formSubmitted = new EventEmitter<Contact>();
 
@@ -32,6 +34,10 @@ export class ContactFormComponent {
       telefone: [''],
       favorito: ['N', Validators.required]
     });
+  }
+
+  canDeactivate(): boolean {
+    return false; // verificação realizada no guard
   }
 
   // Getter/Setter para o checkbox

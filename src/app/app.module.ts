@@ -9,6 +9,7 @@ import { ContactListComponent } from './components/contact-list/contact-list.com
 import { EditContactComponent } from "./components/edit-contact/edit-contact.component";
 import { AddContactComponent } from "./components/add-contact/add-contact.component";
 import { ContactFormComponent } from "./components/shared/contact-form.component"
+import { routes } from './app.routes';
 
 import { PhoneMaskDirective } from "./components/shared/directives/phone-mask.directive";
 
@@ -25,7 +26,7 @@ import { PhoneMaskDirective } from "./components/shared/directives/phone-mask.di
     BrowserModule,
     HttpClient,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
 })
