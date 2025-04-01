@@ -9,7 +9,7 @@
       [(ngModel)]="searchTerm"
       (input)="applyFilter()"
     />
-    <a routerLink="/add" class="d-inline-flex btn btn-primary">Adicionar</a>
+    <a routerLink="/adicionar-contato" class="d-inline-flex btn btn-primary">Adicionar</a>
   </div>
 
   <div *ngIf="loading" class="text-center">
@@ -44,7 +44,7 @@
             [style.color]="'#ffff00'"
           ></i>
           <a
-            [routerLink]="['/edit', contact.id]"
+            [routerLink]="['/editar-contato', contact.id]"
             class="btn btn-sm btn-secondary text-center"
             [style.height]="'31px'"
             >Editar</a

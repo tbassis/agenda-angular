@@ -8,13 +8,13 @@ import { UnsavedChangesGuard } from "./guards/unsaved-changes.guard";
 export const routes: Routes = [
   { path: "", title: "Listagem de contatos", component: ContactListComponent },
   {
-    path: "edit/:id",
+    path: "editar-contato/:id",
     title: "Editar contato",
     component: EditContactComponent,
     canDeactivate: [UnsavedChangesGuard],
   },
   {
-    path: "add",
+    path: "adicionar-contato",
     title: "Adicionar contato",
     component: AddContactComponent,
     canDeactivate: [UnsavedChangesGuard],
