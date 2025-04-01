@@ -3,14 +3,16 @@ import { CanDeactivate } from "@angular/router";
 import { Observable } from "rxjs";
 
 export interface CanDeactivateComponent {
-	hasUnsavedChange: boolean;
+  hasUnsavedChange: boolean;
 }
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: "root",
 })
 export class UnsavedChangesGuard implements CanDeactivate<CanDeactivateComponent> {
-	canDeactivate(component: CanDeactivateComponent): boolean {
-		return component.hasUnsavedChange ? confirm('Você tem alterações não salvas. Deseja realmente sair?') : true;
-	}
+  canDeactivate(component: CanDeactivateComponent): boolean {
+    return component.hasUnsavedChange
+      ? confirm("Você tem alterações não salvas. Deseja realmente sair?")
+      : true;
+  }
 }

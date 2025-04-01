@@ -1,21 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Contact } from '../../models/contact';
-import { PhoneMaskDirective } from "../directives/phone-mask.directive"
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { Contact } from "../../models/contact";
+import { PhoneMaskDirective } from "../directives/phone-mask.directive";
 
 @Component({
   standalone: true,
-  selector: 'contact-form-component',
-  templateUrl: './contact-form.component.html',
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    PhoneMaskDirective
-  ],
+  selector: "contact-form-component",
+  templateUrl: "./contact-form.component.html",
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, PhoneMaskDirective],
 })
 export class ContactFormComponent {
   @Input() initialData: Contact | null = null;
@@ -27,13 +22,12 @@ export class ContactFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      celular: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
-      telefone: [''],
-      favorito: ['N', Validators.required]
+      nome: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      celular: ["", [Validators.required, Validators.pattern(/^\d+$/)]],
+      telefone: [""],
+      favorito: ["N", Validators.required],
     });
-
   }
 
   onInputChange(): void {
@@ -42,11 +36,11 @@ export class ContactFormComponent {
 
   // Getter/Setter para o checkbox
   get favoriteCheckbox(): boolean {
-    return this.contactForm.get('favorito')?.value === 'S';
+    return this.contactForm.get("favorito")?.value === "S";
   }
 
   set favoriteCheckbox(value: boolean) {
-    this.contactForm.get('favorito')?.setValue(value ? 'S' : 'N');
+    this.contactForm.get("favorito")?.setValue(value ? "S" : "N");
   }
 
   onFavoriteCheckboxChange(event: Event) {
@@ -57,17 +51,16 @@ export class ContactFormComponent {
     if (this.initialData) {
       this.contactForm.patchValue({
         ...this.initialData,
-        favorito: this.initialData.favorito || 'N' // Default para 'N'
+        favorito: this.initialData.favorito || "N", // Default para 'N'
       });
     }
   }
 
   onSubmit() {
-    
     if (this.contactForm.valid) {
       const formData = {
         ...this.contactForm.value,
-        favorito: this.contactForm.value.favorito
+        favorito: this.contactForm.value.favorito,
       };
       this.formSubmitted.emit(formData);
     }

@@ -7,6 +7,11 @@
     </div>
   </div>
 
-  <contact-form-component *ngIf="!loading" [submitting]="submitting" [initialData]="contact"
-    (formSubmitted)="onFormSubmit($event)" (formUpdated)="onFormUpdated($event)"></contact-form-component>
+  <contact-form-component
+    *ngIf="!loading"
+    [submitting]="submitting"
+    [initialData]="contact"
+    (formSubmitted)="onFormSubmit($event)"
+    (formUpdated)="onFormUpdated($event)"
+  ></contact-form-component>
 </div>

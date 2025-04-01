@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ContactService } from '../../services/contact.service';
-import { ContactResume } from '../../models/contact';
-import { RouterModule } from '@angular/router';
-import { PhoneMaskDirective } from "../../shared/directives/phone-mask.directive"
+import { Component, OnInit } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { ContactService } from "../../services/contact.service";
+import { ContactResume } from "../../models/contact";
+import { RouterModule } from "@angular/router";
+import { PhoneMaskDirective } from "../../shared/directives/phone-mask.directive";
 
 @Component({
   standalone: true,
-  selector: 'app-contact-list',
-  templateUrl: './contact-list.component.html',
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    PhoneMaskDirective
-  ],
+  selector: "app-contact-list",
+  templateUrl: "./contact-list.component.html",
+  imports: [CommonModule, FormsModule, RouterModule, PhoneMaskDirective],
 })
 export class ContactListComponent implements OnInit {
   contacts: ContactResume[] = [];
   filteredContacts: ContactResume[] = [];
-  searchTerm: string = '';
+  searchTerm: string = "";
   loading = true;
 
   constructor(private contactService: ContactService) {}
@@ -34,31 +29,33 @@ export class ContactListComponent implements OnInit {
       next: (contacts) => {
         this.contacts = contacts;
         this.filteredContacts = [...contacts];
-        this.loading = false;        
+        this.loading = false;
       },
       error: (error) => {
-        console.error('Erro ao carregar lista de contatos:', error);
+        console.error("Erro ao carregar lista de contatos:", error);
         this.loading = false;
-      }
+      },
     });
   }
 
   applyFilter() {
     const searchTermLower = this.searchTerm.toLowerCase();
-    this.filteredContacts = this.contacts.filter(contact => {
-      return contact.nome.toLowerCase().includes(searchTermLower) ||
-             contact.email.toLowerCase().includes(searchTermLower) ||
-             contact.celular.includes(this.searchTerm);
+    this.filteredContacts = this.contacts.filter((contact) => {
+      return (
+        contact.nome.toLowerCase().includes(searchTermLower) ||
+        contact.email.toLowerCase().includes(searchTermLower) ||
+        contact.celular.includes(this.searchTerm)
+      );
     });
   }
 
   deleteContact(id: number) {
-    if (confirm('Tem certeza que deseja excluir permanentemente este contato?')) {
+    if (confirm("Tem certeza que deseja excluir permanentemente este contato?")) {
       this.contactService.deleteContact(id).subscribe({
         next: () => {
           this.loadContacts();
         },
-        error: (error) => console.error('Erro ao excluir contato:', error)
+        error: (error) => console.error("Erro ao excluir contato:", error),
       });
     }
   }

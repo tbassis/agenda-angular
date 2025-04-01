@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ContactService } from './services/contact.service';
-import { Contact, ContactResume } from './models/contact';
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { ContactService } from "./services/contact.service";
+import { Contact, ContactResume } from "./models/contact";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.css",
 })
 export class AppComponent {
-  title = 'agenda-angular';
+  title = "agenda-angular";
 
   contacts: Contact[] = [];
   contactsResume: ContactResume[] = [];
@@ -24,8 +24,8 @@ export class AppComponent {
     email: "igost@email.com",
     celular: "81992334872",
     favorito: "S",
-    ativo: "S"
-  }
+    ativo: "S",
+  };
 
   updatedContact: Contact = {
     id: 10,
@@ -33,12 +33,10 @@ export class AppComponent {
     email: "igost@email.com",
     celular: "81992334872",
     favorito: "S",
-    ativo: "S"
-  }
+    ativo: "S",
+  };
 
-  constructor(
-    private contactService: ContactService,
-  ) { }
+  constructor(private contactService: ContactService) {}
 
   ngOnInit() {
     // this.loadContacts();
@@ -150,6 +148,4 @@ export class AppComponent {
   //     }
   //   });
   //}
-
-
 }

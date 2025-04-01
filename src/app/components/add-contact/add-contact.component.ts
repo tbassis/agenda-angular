@@ -1,31 +1,27 @@
-import { Component } from '@angular/core';
-import { ContactService } from '../../services/contact.service';
-import { Router } from '@angular/router';
-import { ContactFormComponent } from "../../shared/components/contact-form.component"
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component } from "@angular/core";
+import { ContactService } from "../../services/contact.service";
+import { Router } from "@angular/router";
+import { ContactFormComponent } from "../../shared/components/contact-form.component";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 import { CanDeactivateComponent } from "../../guards/unsaved-changes.guard";
 
 @Component({
-  selector: 'app-add-contact',
-  templateUrl: './add-contact.component.html',
-	imports: [
-		ContactFormComponent,
-		CommonModule,
-		FormsModule
-	],
+  selector: "app-add-contact",
+  templateUrl: "./add-contact.component.html",
+  imports: [ContactFormComponent, CommonModule, FormsModule],
 })
 export class AddContactComponent implements CanDeactivateComponent {
-	submitting = false;
+  submitting = false;
   celularExiste = false;
-  hasUnsavedChange:boolean = false;
-	
+  hasUnsavedChange: boolean = false;
+
   constructor(
     private contactService: ContactService,
-    private router: Router
+    private router: Router,
   ) {}
 
-  onFormUpdated(formUpdated:boolean) {
+  onFormUpdated(formUpdated: boolean) {
     this.hasUnsavedChange = formUpdated;
   }
 
@@ -37,7 +33,6 @@ export class AddContactComponent implements CanDeactivateComponent {
     // Primeiro verifica o telefone
     this.contactService.checkPhoneExists(contactData.celular).subscribe({
       next: (response) => {
-        
         if (response.existe) {
           this.celularExiste = true;
           this.submitting = false;
@@ -47,21 +42,21 @@ export class AddContactComponent implements CanDeactivateComponent {
         }
       },
       error: (error) => {
-        console.error('Erro na verificação:', error);
+        console.error("Erro na verificação:", error);
         this.submitting = false;
-      }
+      },
     });
   }
 
   private addNewContact(contactData: any) {
     this.contactService.addContact(contactData).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(["/"]);
       },
       error: (error) => {
-        console.error('Erro ao adicionar:', error);
+        console.error("Erro ao adicionar:", error);
         this.submitting = false;
-      }
+      },
     });
   }
 }

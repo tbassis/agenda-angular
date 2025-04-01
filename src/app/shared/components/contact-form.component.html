@@ -2,36 +2,51 @@
   <!-- Campo Nome -->
   <div class="mb-3">
     <label for="name" class="form-label">Nome</label>
-    <input type="text" (input)="onInputChange()" class="form-control" id="name" formControlName="nome"
-      [class.is-invalid]="contactForm.get('nome')?.invalid && contactForm.get('nome')?.touched">
+    <input
+      type="text"
+      (input)="onInputChange()"
+      class="form-control"
+      id="name"
+      formControlName="nome"
+      [class.is-invalid]="contactForm.get('nome')?.invalid && contactForm.get('nome')?.touched"
+    />
     <div class="invalid-feedback">
-      <span *ngIf="contactForm.get('nome')?.hasError('required')">
-        O nome é obrigatório
-      </span>
+      <span *ngIf="contactForm.get('nome')?.hasError('required')"> O nome é obrigatório </span>
     </div>
   </div>
 
   <!-- Campo Email -->
   <div class="mb-3">
     <label for="email" class="form-label">E-mail</label>
-    <input type="email" (input)="onInputChange()" class="form-control" id="email" formControlName="email"
-      [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+    <input
+      type="email"
+      (input)="onInputChange()"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+    />
     <div class="invalid-feedback">
-      <span *ngIf="contactForm.get('email')?.hasError('required')">
-        O e-mail é obrigatório
-      </span>
-      <span *ngIf="contactForm.get('email')?.hasError('email')">
-        Formato de e-mail inválido
-      </span>
+      <span *ngIf="contactForm.get('email')?.hasError('required')"> O e-mail é obrigatório </span>
+      <span *ngIf="contactForm.get('email')?.hasError('email')"> Formato de e-mail inválido </span>
     </div>
   </div>
 
   <!-- Campo Celular -->
   <div class="mb-3">
     <label for="phone" class="form-label">Celular</label>
-    <input type="tel" class="form-control" (input)="onInputChange()" id="phone" formControlName="celular" appPhoneMask="cel"
+    <input
+      type="tel"
+      class="form-control"
+      (input)="onInputChange()"
+      id="phone"
+      formControlName="celular"
+      appPhoneMask="cel"
       placeholder="(**) *****-****"
-      [class.is-invalid]="contactForm.get('celular')?.invalid && contactForm.get('celular')?.touched">
+      [class.is-invalid]="
+        contactForm.get('celular')?.invalid && contactForm.get('celular')?.touched
+      "
+    />
     <div class="invalid-feedback">
       <span *ngIf="contactForm.get('celular')?.hasError('required')">
         O celular é obrigatório
@@ -45,9 +60,18 @@
   <!-- Campo Telefone -->
   <div class="mb-3">
     <label for="phone" class="form-label">Telefone</label>
-    <input type="tel" class="form-control" (input)="onInputChange()" id="phone" formControlName="telefone" appPhoneMask="tel"
+    <input
+      type="tel"
+      class="form-control"
+      (input)="onInputChange()"
+      id="phone"
+      formControlName="telefone"
+      appPhoneMask="tel"
       placeholder="(**) ****-****"
-      [class.is-invalid]="contactForm.get('telefone')?.invalid && contactForm.get('telefone')?.touched">
+      [class.is-invalid]="
+        contactForm.get('telefone')?.invalid && contactForm.get('telefone')?.touched
+      "
+    />
     <div class="invalid-feedback">
       <span *ngIf="contactForm.get('telefone')?.hasError('pattern')">
         Apenas números são permitidos
@@ -57,12 +81,16 @@
 
   <!-- Campo Contato Favorito -->
   <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="favorite" (input)="onInputChange()" [checked]="favoriteCheckbox"
-      (change)="onFavoriteCheckboxChange($event)">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="favorite"
+      (input)="onInputChange()"
+      [checked]="favoriteCheckbox"
+      (change)="onFavoriteCheckboxChange($event)"
+    />
     <label class="form-check-label" for="favorite">Favorito</label>
   </div>
-
-
 
   <!-- Campo Data de Nascimento -->
   <!-- <div class="mb-3">
@@ -78,13 +106,12 @@
   <!-- Botão de Submit -->
   <div class="d-grid gap-2">
     <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">
-      <span *ngIf="!submitting; else elseBlock">{{ initialData ? 'Atualizar' : 'Salvar' }}</span>
+      <span *ngIf="!submitting; else elseBlock">{{ initialData ? "Atualizar" : "Salvar" }}</span>
       <ng-template #elseBlock>
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </ng-template>
-
     </button>
   </div>
 </form>

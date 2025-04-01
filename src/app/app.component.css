@@ -1,9 +1,9 @@
 /* Estilos globais opcionais */
 .active {
-    font-weight: bold;
-    color: #fff !important;
-  }
-  
-  .navbar {
-    margin-bottom: 2rem;
-  }
+  font-weight: bold;
+  color: #fff !important;
+}
+
+.navbar {
+  margin-bottom: 2rem;
+}
