@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <h2>Adicionar Novo Contato</h2>
+
+  <!-- Aviso de telefone existente -->
+  <div *ngIf="celularExiste" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Atenção!</strong> Já existe um contato cadastrado com este número.
+    <button type="button" class="btn-close" (click)="celularExiste = false"></button>
+  </div>
+
+  <!-- Componente de formulário reutilizável -->
+  <contact-form-component [formMode]="'add'" [submitting]="submitting" (formSubmitted)="onFormSubmit($event)"></contact-form-component>
+</div>
